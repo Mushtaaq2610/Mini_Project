@@ -84,7 +84,7 @@ class _MapState extends State<Map> {
                 Marker(
                   width: 30.0,
                   height: 30.0,
-                  point: LatLng(-20.04664,  57.52878),
+                  point: LatLng(-20.1609,  57.5012),
                   builder: (ctx) => GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
@@ -93,122 +93,7 @@ class _MapState extends State<Map> {
                           return Container(
                             height: 100,
                             child: Center(
-                              child: Text('Hotel 1 : Veranda Pointe Aux Biches'),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      child: Container(
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.blueAccent,
-                          size: 40,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Marker(
-                  width: 30.0,
-                  height: 30.0,
-                  point: LatLng(-20.00214, 57.65979),
-                  builder: (ctx) => GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: ctx,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: 100,
-                            child: Center(
-                              child: Text('Hotel 2 : Lux Grand Gaube'),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      child: Container(
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.blueAccent,
-                          size: 40,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Marker(
-                  width: 30.0,
-                  height: 30.0,
-                  point: LatLng(-20.0707, 57.5162),
-                  builder: (ctx) => GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: ctx,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: 100,
-                            child: Center(
-                              child: Text('Hotel 3 : Le Meridien'),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      child: Container(
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.blueAccent,
-                          size: 40,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),Marker(
-                  width: 30.0,
-                  height: 30.0,
-                  point: LatLng(-20.28484, 57.36444),
-                  builder: (ctx) => GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: ctx,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: 100,
-                            child: Center(
-                              child: Text('Hotel 4 : Manisa Hotel Flic En Flac'),
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      child: Container(
-                        child: Icon(
-                          Icons.location_on,
-                          color: Colors.blueAccent,
-                          size: 40,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Marker(
-                  width: 30.0,
-                  height: 30.0,
-                  point: LatLng(-20.20582, 57.77744),
-                  builder: (ctx) => GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: ctx,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: 100,
-                            child: Center(
-                              child: Text('Hotel 5 : The Residence Hotel'),
+                              child: Text('Hydroponics 1'),
                             ),
                           );
                         },

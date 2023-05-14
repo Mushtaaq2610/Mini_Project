@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,119 +9,78 @@ class FoodList extends StatefulWidget {
 }
 
 class _FoodListState extends State<FoodList> {
-  final databaseReference = FirebaseDatabase.instance.reference();
-  String? dropdownValue1;
-  String? dropdownValue2;
+  String dropdownValue = 'Summer';
+
+  List<String> winterItems = ['Orange - A juicy citrus fruit that is perfect for cold winter days',
+    'Apple - Apples are a versatile fruit and can be enjoyed fresh, baked into pies, or used in various recipes.',];
+  List<String> summerItems = ['Strawberry - A sweet and juicy fruit that is perfect for summer desserts',
+    'Watermelon - A refreshing fruit that is great for hydrating during the summer months',];
+
+  List<DropdownMenuItem<String>> getDropdownMenuItems(List<String> items) {
+    return items.map((String value) {
+      return DropdownMenuItem<String>(
+        value: value,
+        child: Tooltip(
+          message: 'Description for $value',
+          child: ListTile(
+            leading: Icon(Icons.check),
+            title: Text(value),
+          ),
+        ),
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: CupertinoColors.extraLightBackgroundGray,
+      appBar: AppBar(
+        title: Text('Food Season'),
+      ),
       body: Column(
         children: [
           Image.asset(
-            'assets/images/1.jpg',
-            height: 200,
-            width: 200,
+            'assets/images/smart-farming-smart-agriculture-iot.jpg',
+            height: 350,
+            width: 700,
+          ),
+          DropdownButton<String>(
+            value: dropdownValue,
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+            items: <String>['Summer', 'Winter']
+                .toSet().toList()
+                .map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Tooltip(
+                  message: 'Description for $value',
+                  child: Text(value, style: TextStyle(color: Colors.green)),
+                ),
+              );
+            }).toList(),
           ),
           SizedBox(height: 20),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    value: dropdownValue1,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue1 = newValue;
-                      });
-                    },
-                    items: <String>['Option 1', 'Option 2', 'Option 3', 'Option 4']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                    ),
-                  ),
-                  child: DropdownButton<String>(
-                    value: dropdownValue2,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue2 = newValue;
-                      });
-                    },
-                    items: <String>['Option A', 'Option B', 'Option C', 'Option D']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey,
-                ),
-              ),
-              child: Center(
-                child: StreamBuilder(
-                  stream: databaseReference.child('food').onValue,
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData &&
-                        !snapshot.hasError &&
-                        snapshot.data!.snapshot.value != null) {
-                      var food =
-                      double.parse(snapshot.data!.snapshot.value.toString());
-                      return Text(
-                        'Food Season: $food',
-                        style: TextStyle(fontSize: 24),
-                      );
-                    } else {
-                      return CircularProgressIndicator();
-                    }
-                  },
-                ),
-              ),
+          if (dropdownValue == 'Summer')
+            Column(
+              children: [
+                Text('Summer fruits offer a quick energy boost and aid in reducing exhaustion and fatigue, which are common during the summer months.'),
+                SizedBox(height: 10,),
+                ...getDropdownMenuItems(summerItems),
+              ],
             ),
-          ),
-          Container(
-            height: 50,
-            color: Colors.blue,
-            child: Center(
-              child: Text(
-                'Real Time Temperature Data',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          if (dropdownValue == 'Winter')
+            Column(
+              children: [
+                Text('As the temperatures drop, many people start to crave the flavors of winter.'),
+                SizedBox(height: 10,),
+                ...getDropdownMenuItems(winterItems),
+              ],
             ),
-          ),
         ],
       ),
     );
