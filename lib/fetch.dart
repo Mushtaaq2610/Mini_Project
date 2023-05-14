@@ -16,9 +16,9 @@ class _TemperatureListState extends State<TemperatureList> {
       body: Column(
         children: [
           Image.asset(
-            'assets/images/1.jpg',
+            'assets/images/Precision-Agriculture-img 1.jpg',
             height: 200,
-            width: 200,
+            width: 300,
           ),
           SizedBox(height: 20),
           Expanded(
