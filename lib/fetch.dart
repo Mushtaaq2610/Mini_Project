@@ -15,6 +15,7 @@ class _TemperatureListState extends State<TemperatureList> {
     return Scaffold(
       body: Column(
         children: [
+          SizedBox(height: 40),
           Image.asset(
             'assets/images/Precision-Agriculture-img 1.jpg',
             height: 200,
