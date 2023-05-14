@@ -76,7 +76,7 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             Text('Welcome To Your Greenhouse Connect System!'),
             SizedBox(height: 20),
-            Image.asset('assets/images/2.jpg'), // Replace `assets/images/home.png` with the path to your image asset
+            Image.asset('assets/images/download.jfif'), // Replace `assets/images/home.png` with the path to your image asset
             SizedBox(height: 16.0), // Add some spacing between the image and text
             Text(
               'Greenhouse, also called glasshouse, building designed for the protection of tender or out-of-season plants against excessive cold or heat. In the 17th century, greenhouses were ordinary brick or timber shelters with a normal proportion of window space and some means of heating. As glass became cheaper and as more sophisticated forms of heating became available, the greenhouse evolved into a roofed and walled structure built of glass with a minimal wooden or metal skeleton. By the middle of the 19th century, the greenhouse had developed from a mere refuge from a hostile climate into a controlled environment, adapted to the needs of particular plants. A huge increase in the availability of exotic plants in the 19th century led to a vast increase in glasshouse culture in England and elsewhere. Large greenhouses are important in agriculture and horticulture and for botanical science, while smaller structures are commonly used by hobbyists, collectors, and home gardeners.',
