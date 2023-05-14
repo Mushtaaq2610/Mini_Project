@@ -77,44 +77,34 @@ class _DashboardPageState extends State<DashboardPage> {
           Text('Welcome To Your Greenhouse Connect System!', style: TextStyle(fontSize: 24)),
           backgroundColor: Colors.blue,
         ),
-        body: Stack(
+        body: Column(
           children: [
-            Center(
+            Image.asset('assets/images/download.jfif', height: 300, width: double.infinity),
+            ElevatedButton(
               child:
-              Image.asset('assets/images/download.jfif', height: 350, width: 700),
+              Text(_showText ? 'What is a Greenhouse Connect System' : 'What is a Greenhouse Connect System'),
+              onPressed: () {
+                setState(() {
+                  _showText = !_showText;
+                });
+              },
+              style:
+              ElevatedButton.styleFrom(primary: Colors.blueGrey, minimumSize:
+              Size(200, 50),),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: ElevatedButton(
-                    child:
-                    Text(_showText ? 'Hide Description' : 'Show Description'),
-                    onPressed: () {
-                      setState(() {
-                        _showText = !_showText;
-                      });
-                    },
-                    style:
-                    ElevatedButton.styleFrom(primary: Colors.blueGrey, minimumSize:
-                    Size(200, 50),),
-                  ),
-                ),
-                if (_showText)
-                  Padding(
-                    padding:
-                    const EdgeInsets.all(16.0),
-                    child:
-                    Text('Greenhouse, also called glasshouse, building designed for the protection of tender or out-of-season plants against excessive cold or heat. In the 17th century, greenhouses were ordinary brick or timber shelters with a normal proportion of window space and some means of heating. As glass became cheaper and as more sophisticated forms of heating became available, the greenhouse evolved into a roofed and walled structure built of glass with a minimal wooden or metal skeleton. By the middle of the 19th century, the greenhouse had developed from a mere refuge from a hostile climate into a controlled environment, adapted to the needs of particular plants. A huge increase in the availability of exotic plants in the 19th century led to a vast increase in glasshouse culture in England and elsewhere. Large greenhouses are important in agriculture and horticulture and for botanical science, while smaller structures are commonly used by hobbyists, collectors, and home gardeners.',
-                      textAlign:
-                      TextAlign.justify,),
-                  ),
-              ],
-            ),
-
+            if (_showText)
+              Padding(
+                padding:
+                const EdgeInsets.all(16.0),
+                child:
+                Text('connected greenhouse structures occupy less land and have no sidewalls; therefore, fewer materials are needed for construction. Because there are no walls where the gutters are, more interior space is available than in several free-standing structures.',
+                  textAlign:
+                  TextAlign.justify,),
+              ),
           ],
         ),
       ),
+
     );
   }
 }
